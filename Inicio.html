@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -143,12 +143,10 @@ iframe {
             height: 100%;
         }
 
-
-#trailerFrame {
-            width: 90vw;
-            height: 45vw;
-            
-            border: none;
+video {
+            width: 350px; /* Ancho fijo del video */
+            height: 200px; /* Alto fijo del video */
+            background-color: black;
         }
     </style>
 </head>
@@ -169,8 +167,10 @@ iframe {
         <button class="boton-buscar" onclick="buscar()">Buscar</button>
     </div>
     
-  <iframe id="trailerFrame" src="https://maicolyordan.github.io/Evoluci-nTV-/TRAILER/trailer.html" allowfullscreen></iframe>
-     
+
+<video id="liveVideo" controls autoplay muted>
+        Tu navegador no soporta el reproductor de video.
+    </video>
 
     <h3>COMEDIA</h3>
 <div class="gallery-container">
@@ -349,9 +349,50 @@ function toggleChat() {
                 chatContainer.style.display = "none";
             }
         }
+        
+var videos = [
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Alerta%20Roja_%20Terremoto%208.5%20-%20Trailer%20Doblado(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ashfall_alerta_roja.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Alien_%20Romulus%20_%20Tr%C3%A1iler%20Oficial%20en%20espa%C3%B1ol%20_%20HD(720P_HD).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/alien_romulus.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Un%20Espia%20Y%20Medio__%20Pelea%20En%20El%20Bar%20pt.2(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/un_espia_y_medio.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Winners%20and%20Sinners_Vencedores%20y%20vencidos%20(1983)%20HD%20Espa%C3%B1ol%20-%20MG_MF(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/MARCIALES/vencedores_y_vencidos_1983.html" }
+        ];
+
+        var selectedVideo;
+
+        function playRandomVideo() {
+            var randomIndex = Math.floor(Math.random() * videos.length);
+            selectedVideo = videos[randomIndex];
+
+            var video = document.getElementById('liveVideo');
+            video.src = selectedVideo.url;
+            video.play();
+
+            // Poner el video en pantalla completa
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
+
+        document.addEventListener("fullscreenchange", function() {
+            if (document.fullscreenElement) {
+                window.location.href = selectedVideo.page;
+            }
+        });
+
+        window.onload = function() {
+            playRandomVideo();
+        };
     </script>
-<iframe src="https://evoluciontv9.wordpress.combh//" width="10" height="10" style="border:1px solid black;">
+<iframe src="https://evoluciontv9.wordpress.com//" width="10" height="10" style="border:1px solid black;">
         Tu navegador no soporta iframes.
     </iframe>
+    
+    
 </body>
 </html>
