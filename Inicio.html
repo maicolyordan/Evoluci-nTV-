@@ -148,6 +148,23 @@ video {
             height: 200px; /* Alto fijo del video */
             background-color: black;
         }
+button {
+            width: 90%;
+            max-width: 300px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +188,8 @@ video {
 <video id="liveVideo" controls autoplay muted>
         Tu navegador no soporta el reproductor de video.
     </video>
+
+    <button id="redirectButton">VER PELICULA</button>
 
     <h3>COMEDIA</h3>
 <div class="gallery-container">
@@ -351,45 +370,51 @@ function toggleChat() {
         }
         
 var videos = [
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Alerta%20Roja_%20Terremoto%208.5%20-%20Trailer%20Doblado(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ashfall_alerta_roja.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Alien_%20Romulus%20_%20Tr%C3%A1iler%20Oficial%20en%20espa%C3%B1ol%20_%20HD(720P_HD).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/alien_romulus.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Un%20Espia%20Y%20Medio__%20Pelea%20En%20El%20Bar%20pt.2(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/un_espia_y_medio.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Winners%20and%20Sinners_Vencedores%20y%20vencidos%20(1983)%20HD%20Espa%C3%B1ol%20-%20MG_MF(360P).mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/MARCIALES/vencedores_y_vencidos_1983.html" }
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/A%20prueba%20de%20Fuego.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/a_prueba_de_fuego.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/LA%20GUERRA%20DEL%20MA%C3%91ANA.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/la_guerra_del_ma%C3%B1ana.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/MI%20VILLANO%20FAVORITO.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/mi_villano_favorito_4.html" },
+            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Nacho%20Libre.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/nacho_libre.html" }
+            
         ];
 
-        var selectedVideo;
+        var currentVideoIndex = -1;
 
         function playRandomVideo() {
-            var randomIndex = Math.floor(Math.random() * videos.length);
-            selectedVideo = videos[randomIndex];
+            var newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * videos.length);
+            } while (newIndex === currentVideoIndex); // Evita repetir el mismo video
+
+            currentVideoIndex = newIndex;
+            var selectedVideo = videos[currentVideoIndex];
 
             var video = document.getElementById('liveVideo');
-            video.src = selectedVideo.url;
-            video.play();
+            var button = document.getElementById('redirectButton');
 
-            // Poner el video en pantalla completa
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.mozRequestFullScreen) { // Firefox
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) { // IE/Edge
-                video.msRequestFullscreen();
-            }
+            video.src = selectedVideo.url;
+            button.onclick = function() {
+                window.location.href = selectedVideo.page;
+            };
+
+            video.play();
         }
 
         document.addEventListener("fullscreenchange", function() {
             if (document.fullscreenElement) {
-                window.location.href = selectedVideo.page;
+                window.location.href = videos[currentVideoIndex].page;
             }
         });
 
         window.onload = function() {
             playRandomVideo();
+
+            var video = document.getElementById('liveVideo');
+            video.onended = function() { 
+                playRandomVideo(); // Cambia al siguiente video al terminar
+            };
         };
     </script>
-<iframe src="https://evoluciontv9.wordpress.com//" width="10" height="10" style="border:1px solid black;">
+<iframe src="https://evoluciontv9.wordpress.com" width="10" height="10" style="border:1px solid black;">
         Tu navegador no soporta iframes.
     </iframe>
     
