@@ -165,6 +165,21 @@ button {
         button:hover {
             background-color: darkred;
         }
+.btn {
+    position: absolute;
+    bottom: 315px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    display: none;
+}
+
+.btn:hover { background: rgba(0, 0, 0, 0.8); }
     </style>
 </head>
 <body>
@@ -185,9 +200,14 @@ button {
     </div>
     
 
-<video id="liveVideo" controls autoplay muted>
-        Tu navegador no soporta el reproductor de video.
-    </video>
+<div class="video-container">
+        <video id="liveVideo" controls autoplay muted>
+            Tu navegador no soporta el reproductor de video.
+        </video>
+        <button id="tapMessage" class="btn" onclick="enableAudio()">🔊 Activar sonido</button>
+    </div>
+
+
 
     <button id="redirectButton">VER PELICULA</button>
 
@@ -390,13 +410,25 @@ var videos = [
 
             var video = document.getElementById('liveVideo');
             var button = document.getElementById('redirectButton');
+            var tapMessage = document.getElementById('tapMessage');
 
             video.src = selectedVideo.url;
             button.onclick = function() {
                 window.location.href = selectedVideo.page;
             };
 
+            video.muted = true;
             video.play();
+            
+            tapMessage.style.display = "block"; // Mostrar botón de activar audio
+        }
+
+        function enableAudio() {
+            var video = document.getElementById('liveVideo');
+            var tapMessage = document.getElementById('tapMessage');
+
+            video.muted = false;
+            tapMessage.style.display = "none"; // Ocultar botón de activar sonido
         }
 
         document.addEventListener("fullscreenchange", function() {
