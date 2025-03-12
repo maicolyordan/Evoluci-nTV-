@@ -1,0 +1,233 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Merlina 2022</title> 
+  <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre elementos */
+}
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+select {
+  background: #ffffff;
+  color: #000000;
+}
+
+button {
+  background: #ff4d4d;
+  color: white;
+}
+
+button:hover {
+  background: #e60000;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding-top: 56.25%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none; /* Oculto hasta que se seleccione un capítulo */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/FONDO.png');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+#volver-inicio {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: none;
+}
+    
+    p {
+      margin-top: 20px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+
+  </style>
+</head>
+<body> 
+
+  <button id="volver-inicio" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html';"> VOLVER AL INICIO </button> 
+  <div style="height: 50px;"></div> 
+  </div>
+<h1>Merlina 2022</h1>
+
+  <div class="container">
+    <select id="temporadas">
+      <option value="">Selecciona Temporada</option>
+    </select>
+
+    <select id="capitulos">
+      <option value="">Selecciona Capítulo</option>
+    </select>
+
+    <button onclick="cargarCapitulo(1)">Ver en opción 1</button>
+    <button onclick="cargarCapitulo(2)">Ver en opción 2</button>
+  </div>
+
+  <div class="iframe-container" onclick="hideOverlay()">
+    <div class="overlay"></div>  
+    <iframe id="secureFrame" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"></iframe>
+  </div>
+ 
+  <p> Serie de TV (2022-). Primera temporada: 8 episodios. Sigue los años de Miércoles Addams como estudiante, intentando dominar su emergente habilidad psíquica mientras trata de resolver el misterio que enredó a sus padres. </p> 
+ <script>
+    const seriesData = {
+      "1": {
+        "capitulos": {
+          "1": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/9/T/u/Y/9TuYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "2": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/h/I/w/Y/hIwYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "3": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/3/A/y/Y/3AyYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "4": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/_/0/z/Y/_0zYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "5": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/z/V/A/Y/zVAYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "6": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/d/V/B/Y/dVBYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "7": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/R/P/C/Y/RPCYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "8": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/t/n/F/Y/tnFYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" }
+         
+
+
+          
+        }
+      },
+
+
+    };
+
+    const temporadasSelect = document.getElementById("temporadas");
+    const capitulosSelect = document.getElementById("capitulos");
+    const iframe = document.getElementById("secureFrame");
+    const overlay = document.querySelector('.overlay');
+
+    function cargarTemporadas() {
+      temporadasSelect.innerHTML = "<option value=''>Selecciona Temporada</option>";
+      Object.keys(seriesData).forEach(temp => {
+        const option = document.createElement("option");
+        option.value = temp;
+        option.textContent = "Temporada " + temp;
+        temporadasSelect.appendChild(option);
+      });
+    }
+
+    temporadasSelect.addEventListener("change", () => {
+      const temporadaSeleccionada = temporadasSelect.value;
+      capitulosSelect.innerHTML = "<option value=''>Selecciona Capítulo</option>";
+
+      if (temporadaSeleccionada && seriesData[temporadaSeleccionada]) {
+        Object.keys(seriesData[temporadaSeleccionada].capitulos).forEach(cap => {
+          const option = document.createElement("option");
+          option.value = cap;
+          option.textContent = "Capítulo " + cap;
+          capitulosSelect.appendChild(option);
+        });
+      }
+    });
+
+    function cargarCapitulo(servidor) {
+      const temporadaSeleccionada = temporadasSelect.value;
+      const capituloSeleccionado = capitulosSelect.value;
+
+      if (temporadaSeleccionada && capituloSeleccionado) {
+        const capituloData = seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado];
+
+        if (capituloData) {
+          iframe.src = capituloData[`servidor${servidor}`] || "https://us.123rf.com/450wm/yoginta/yoginta2212/yoginta221200667/196280960-no-hay-v%C3%ADdeo-disponible-ilustraci%C3%B3n-vectorial.jpg";
+          mostrarIframe();
+        }
+      } else {
+        alert("Seleccione una temporada y un capítulo.");
+      }
+    }
+
+    function hideOverlay() {
+      if (iframe.src !== "") {
+        mostrarIframe();
+      }
+    }
+
+    function mostrarIframe() {
+      overlay.style.display = 'none';
+      iframe.style.display = 'block';
+    }
+
+    window.addEventListener("load", cargarTemporadas);
+</script>
+ 
+
+ 
+</body>
+</html>
