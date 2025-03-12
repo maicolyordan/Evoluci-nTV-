@@ -1,0 +1,244 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>DAIMA</title> 
+  <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre elementos */
+}
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+select {
+  background: #333;
+  color: #fff;
+}
+
+button {
+  background: #ff4d4d;
+  color: white;
+}
+
+button:hover {
+  background: #e60000;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding-top: 56.25%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none; /* Oculto hasta que se seleccione un capítulo */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/FONDO.png');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+#volver-inicio {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: none;
+}
+    
+    p {
+      margin-top: 20px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+
+  </style>
+</head>
+<body> 
+
+  <button id="volver-inicio" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html';"> VOLVER AL INICIO </button> 
+  <div style="height: 50px;"></div> 
+  </div>
+<h1>DAIMA</h1>
+
+  <div class="container">
+    <select id="temporadas">
+      <option value="">Selecciona Temporada</option>
+    </select>
+
+    <select id="capitulos">
+      <option value="">Selecciona Capítulo</option>
+    </select>
+
+    <button onclick="cargarCapitulo(1)">Ver en opción 1</button>
+    <button onclick="cargarCapitulo(2)">Ver en opción 2</button>
+  </div>
+
+  <div class="iframe-container" onclick="hideOverlay()">
+    <div class="overlay"></div>  
+    <iframe id="secureFrame" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"></iframe>
+  </div>
+ 
+  <p> Serie de TV (2024). Goku, Vegeta, Bulma y el resto de personajes de Dragon Ball Super se convierten en niños, y Goten y Trunks vuelven a ser bebés. Parece que un deseo de Shenron provocó que se produjera el cambio, y dependerá de Goku y sus amigos luchar contra las nuevas amenazas que aparezcan. </p> 
+ <script>
+    const seriesData = {
+      "1": {
+        "capitulos": {
+          "1": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/Y/S/y/8/YSy8t.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "2": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/D/Y/y/8/DYy8t.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "3": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/t/1/n/d/t1ndu.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "4": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/8/D/N/k/8DNku.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "5": { "servidor1": "https://1a-1791.com/video/s8/2/h/4/h/x/h4hxu.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "6": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/k/u/C/M/kuCMu.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "7": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/N/U/T/1/NUT1u.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "8": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fw/s8/2/Z/M/U/f/ZMUfv.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "9": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/7/v/U/u/7vUuv.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "10": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/D/H/Q/N/DHQNv.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "11": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/n/f/V/Z/nfVZv.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "12": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fwe2/c9/s8/2/v/-/a/k/v-akw.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "13": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fwe1/42/s8/2/Q/B/M/I/QBMIw.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "14": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fwe1/f3/s8/2/5/e/L/U/5eLUw.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "15": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fwe2/64/s8/2/U/Y/z/-/UYz-w.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "16": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fwe1/a7/s8/2/9/i/n/n/9innx.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "17": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fwe1/55/s8/2/f/U/c/H/fUcHx.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "18": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fwe1/dd/s8/2/S/w/o/W/SwoWx.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "19": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fwe1/2d/s8/2/H/w/S/a/HwSay.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "20": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fwe2/6d/s8/2/c/S/r/o/cSroy.aaa.mp4", "servidor2": "https://example.com/cap2-alt" }
+
+
+          
+        }
+      },
+
+
+    };
+
+    const temporadasSelect = document.getElementById("temporadas");
+    const capitulosSelect = document.getElementById("capitulos");
+    const iframe = document.getElementById("secureFrame");
+    const overlay = document.querySelector('.overlay');
+
+    function cargarTemporadas() {
+      temporadasSelect.innerHTML = "<option value=''>Selecciona Temporada</option>";
+      Object.keys(seriesData).forEach(temp => {
+        const option = document.createElement("option");
+        option.value = temp;
+        option.textContent = "Temporada " + temp;
+        temporadasSelect.appendChild(option);
+      });
+    }
+
+    temporadasSelect.addEventListener("change", () => {
+      const temporadaSeleccionada = temporadasSelect.value;
+      capitulosSelect.innerHTML = "<option value=''>Selecciona Capítulo</option>";
+
+      if (temporadaSeleccionada && seriesData[temporadaSeleccionada]) {
+        Object.keys(seriesData[temporadaSeleccionada].capitulos).forEach(cap => {
+          const option = document.createElement("option");
+          option.value = cap;
+          option.textContent = "Capítulo " + cap;
+          capitulosSelect.appendChild(option);
+        });
+      }
+    });
+
+    function cargarCapitulo(servidor) {
+      const temporadaSeleccionada = temporadasSelect.value;
+      const capituloSeleccionado = capitulosSelect.value;
+
+      if (temporadaSeleccionada && capituloSeleccionado) {
+        const capituloData = seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado];
+
+        if (capituloData) {
+          iframe.src = capituloData[`servidor${servidor}`] || "https://us.123rf.com/450wm/yoginta/yoginta2212/yoginta221200667/196280960-no-hay-v%C3%ADdeo-disponible-ilustraci%C3%B3n-vectorial.jpg";
+          mostrarIframe();
+        }
+      } else {
+        alert("Seleccione una temporada y un capítulo.");
+      }
+    }
+
+    function hideOverlay() {
+      if (iframe.src !== "") {
+        mostrarIframe();
+      }
+    }
+
+    function mostrarIframe() {
+      overlay.style.display = 'none';
+      iframe.style.display = 'block';
+    }
+
+    window.addEventListener("load", cargarTemporadas);
+</script>
+ 
+
+ 
+</body>
+</html>
