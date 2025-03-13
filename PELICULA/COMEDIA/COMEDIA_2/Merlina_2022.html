@@ -83,21 +83,18 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
-  display: none;
 }
 
-.overlay {
+#fondoIframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/FONDO.png');
+  background: url('https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/FONDO.png') no-repeat center center;
   background-size: cover;
-  background-position: center;
   cursor: pointer;
-  z-index: 10;
-  border-radius: 8px;
+  z-index: 2;
 }
 
 #volver-inicio {
@@ -110,7 +107,6 @@ iframe {
   border-radius: 50px;
   border: none;
 }
-
 p {
   margin-top: 20px;
   text-align: center;
@@ -121,7 +117,7 @@ p {
 <body> 
 
   <button id="volver-inicio" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html';"> VOLVER AL INICIO </button> 
-
+  
   <h1>Merlina 2022</h1>
 
   <div class="container">
@@ -132,20 +128,23 @@ p {
     <select id="capitulos">
       <option value="">Selecciona Capítulo</option>
     </select>
+
+    <button onclick="cargarCapitulo(1)">Ver en opción 1</button>
+    <button onclick="cargarCapitulo(2)">Ver en opción 2</button>
   </div>
 
-  <div class="iframe-container" onclick="hideOverlay()">
-    <div class="overlay"></div>  
+  <div class="iframe-container">
+    <div id="fondoIframe" onclick="ocultarFondo()"></div>
     <iframe id="secureFrame" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"></iframe>
   </div>
 
-  <p> Serie de TV (2022-). Primera temporada: 8 episodios. Sigue los años de Miércoles Addams como estudiante, intentando dominar su emergente habilidad psíquica mientras trata de resolver el misterio que enredó a sus padres. </p> 
+<p> Serie de TV (2022-). Primera temporada: 8 episodios. Sigue los años de Miércoles Addams como estudiante, intentando dominar su emergente habilidad psíquica mientras trata de resolver el misterio que enredó a sus padres. </p> 
 
  <script>
     const seriesData = {
       "1": {
         "capitulos": {
-          "1": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/9/T/u/Y/9TuYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
+          "1": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/9/T/u/Y/9TuYl.aaa.mp4", "servidor2": "https://example.com/cap1-alt" },
           "2": { "servidor1": "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/s8/2/h/I/w/Y/hIwYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
           "3": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/3/A/y/Y/3AyYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
           "4": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/_/0/z/Y/_0zYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" },
@@ -155,13 +154,12 @@ p {
           "8": { "servidor1": "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/t/n/F/Y/tnFYl.aaa.mp4", "servidor2": "https://example.com/cap2-alt" }
         }
       }
-      
     };
 
     const temporadasSelect = document.getElementById("temporadas");
     const capitulosSelect = document.getElementById("capitulos");
     const iframe = document.getElementById("secureFrame");
-    const overlay = document.querySelector('.overlay');
+    const fondoIframe = document.getElementById("fondoIframe");
 
     function cargarTemporadas() {
       temporadasSelect.innerHTML = "<option value=''>Selecciona Temporada</option>";
@@ -180,7 +178,7 @@ p {
       const temporadaSeleccionada = temporadasSelect.value;
       capitulosSelect.innerHTML = "<option value=''>Selecciona Capítulo</option>";
 
-      if (seriesData[temporadaSeleccionada]) {
+      if (temporadaSeleccionada && seriesData[temporadaSeleccionada]) {
         Object.keys(seriesData[temporadaSeleccionada].capitulos).forEach(cap => {
           const option = document.createElement("option");
           option.value = cap;
@@ -189,31 +187,40 @@ p {
         });
 
         capitulosSelect.value = "1";
-        cargarCapitulo();
+        cargarCapitulo(1);
       }
     }
 
-    function cargarCapitulo() {
+    function cargarCapitulo(servidor) {
       const temporadaSeleccionada = temporadasSelect.value;
       const capituloSeleccionado = capitulosSelect.value;
 
-      if (seriesData[temporadaSeleccionada] && seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado]) {
+      if (temporadaSeleccionada && capituloSeleccionado) {
         const capituloData = seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado];
-        iframe.src = capituloData.servidor1;
 
-        overlay.style.display = 'block';
-        iframe.style.display = 'none';
+        if (capituloData) {
+          iframe.src = capituloData[`servidor${servidor}`];
+          mostrarIframe();
+        }
+      } else {
+        alert("Seleccione una temporada y un capítulo.");
       }
     }
 
-    function hideOverlay() {
-      overlay.style.display = 'none';
-      iframe.style.display = 'block';
+    capitulosSelect.addEventListener("change", () => {
+      cargarCapitulo(1);
+    });
+
+    function ocultarFondo() {
+      fondoIframe.style.display = "none";
     }
 
-    temporadasSelect.addEventListener("change", cargarCapitulos);
-    capitulosSelect.addEventListener("change", cargarCapitulo);
+    function mostrarIframe() {
+      fondoIframe.style.display = "block";
+    }
+
     window.addEventListener("load", cargarTemporadas);
 </script>
+
 </body>
 </html>
