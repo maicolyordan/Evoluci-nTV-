@@ -3,7 +3,7 @@
 <head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>DAIMA</title> 
+  <title>Dragon Ball Daima 2024</title> 
   <style>
 * {
   box-sizing: border-box;
@@ -23,6 +23,7 @@ body {
 }
 
 h1 {
+  margin-top: 50px;
   margin-bottom: 20px;
   font-size: 26px;
   text-align: center;
@@ -38,7 +39,7 @@ h1 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacio entre elementos */
+  gap: 10px;
 }
 
 select, button {
@@ -73,7 +74,6 @@ button:hover {
   border-radius: 8px;
   overflow: hidden;
   margin-top: 20px;
-  cursor: pointer;
 }
 
 iframe {
@@ -83,21 +83,18 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
-  display: none; /* Oculto hasta que se seleccione un capítulo */
 }
 
-.overlay {
+#fondoIframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/FONDO.png');
+  background: url('https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/FONDO.png') no-repeat center center;
   background-size: cover;
-  background-position: center;
   cursor: pointer;
-  z-index: 10;
-  border-radius: 8px;
+  z-index: 2;
 }
 
 #volver-inicio {
@@ -110,22 +107,18 @@ iframe {
   border-radius: 50px;
   border: none;
 }
-    
-    p {
-      margin-top: 20px;
-      text-align: center;
-      line-height: 1.6;
-    }
-    
-
+p {
+  margin-top: 20px;
+  text-align: center;
+  line-height: 1.6;
+}
   </style>
 </head>
 <body> 
 
   <button id="volver-inicio" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html';"> VOLVER AL INICIO </button> 
-  <div style="height: 50px;"></div> 
-  </div>
-<h1>Dragon Ball Daima 2024</h1>
+  
+  <h1>Dragon Ball Daima 2024</h1>
 
   <div class="container">
     <select id="temporadas">
@@ -140,12 +133,14 @@ iframe {
     <button onclick="cargarCapitulo(2)">Ver en opción 2</button>
   </div>
 
-  <div class="iframe-container" onclick="hideOverlay()">
-    <div class="overlay"></div>  
+  <div class="iframe-container">
+    <div id="fondoIframe" onclick="ocultarFondo()"></div>
     <iframe id="secureFrame" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"></iframe>
   </div>
- 
-  <p> Serie de TV (2024). Goku, Vegeta, Bulma y el resto de personajes de Dragon Ball Super se convierten en niños, y Goten y Trunks vuelven a ser bebés. Parece que un deseo de Shenron provocó que se produjera el cambio, y dependerá de Goku y sus amigos luchar contra las nuevas amenazas que aparezcan. </p> 
+
+<p> Serie de TV (2024). Goku, Vegeta, Bulma y el resto de personajes de Dragon Ball Super se convierten en niños, y Goten y Trunks vuelven a ser bebés. Parece que un deseo de Shenron provocó que se produjera el cambio, y dependerá de Goku y sus amigos luchar contra las nuevas amenazas que aparezcan. </p> 
+
+
  <script>
     const seriesData = {
       "1": {
@@ -182,7 +177,7 @@ iframe {
     const temporadasSelect = document.getElementById("temporadas");
     const capitulosSelect = document.getElementById("capitulos");
     const iframe = document.getElementById("secureFrame");
-    const overlay = document.querySelector('.overlay');
+    const fondoIframe = document.getElementById("fondoIframe");
 
     function cargarTemporadas() {
       temporadasSelect.innerHTML = "<option value=''>Selecciona Temporada</option>";
@@ -192,9 +187,12 @@ iframe {
         option.textContent = "Temporada " + temp;
         temporadasSelect.appendChild(option);
       });
+
+      temporadasSelect.value = "1";
+      cargarCapitulos();
     }
 
-    temporadasSelect.addEventListener("change", () => {
+    function cargarCapitulos() {
       const temporadaSeleccionada = temporadasSelect.value;
       capitulosSelect.innerHTML = "<option value=''>Selecciona Capítulo</option>";
 
@@ -205,8 +203,11 @@ iframe {
           option.textContent = "Capítulo " + cap;
           capitulosSelect.appendChild(option);
         });
+
+        capitulosSelect.value = "1";
+        cargarCapitulo(1);
       }
-    });
+    }
 
     function cargarCapitulo(servidor) {
       const temporadaSeleccionada = temporadasSelect.value;
@@ -216,7 +217,7 @@ iframe {
         const capituloData = seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado];
 
         if (capituloData) {
-          iframe.src = capituloData[`servidor${servidor}`] || "https://us.123rf.com/450wm/yoginta/yoginta2212/yoginta221200667/196280960-no-hay-v%C3%ADdeo-disponible-ilustraci%C3%B3n-vectorial.jpg";
+          iframe.src = capituloData[`servidor${servidor}`];
           mostrarIframe();
         }
       } else {
@@ -224,21 +225,20 @@ iframe {
       }
     }
 
-    function hideOverlay() {
-      if (iframe.src !== "") {
-        mostrarIframe();
-      }
+    capitulosSelect.addEventListener("change", () => {
+      cargarCapitulo(1);
+    });
+
+    function ocultarFondo() {
+      fondoIframe.style.display = "none";
     }
 
     function mostrarIframe() {
-      overlay.style.display = 'none';
-      iframe.style.display = 'block';
+      fondoIframe.style.display = "block";
     }
 
     window.addEventListener("load", cargarTemporadas);
 </script>
- 
 
- 
 </body>
 </html>
