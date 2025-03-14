@@ -1,441 +1,287 @@
-      <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolucion TV</title>
+    <title>EVOLUCION TV</title>
     <style>
-        /* Fondo negro para el cuerpo */
         body {
-            background-color: black;
-            color: white;
+            margin: 0;
             font-family: Arial, sans-serif;
-            text-align: center; /* Alinea el texto en el centro */
+            background-color: #0d0b25;
+            color: white;
         }
 
-        /* Estilo para el título */
         h1 {
-            font-size: 36px;
-            margin-top: 40px;
-            color: #ffffff;
-        }
-h3 {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    color: #ffffff; /* O puedes usar un código hexadecimal, por ejemplo: #1dc8ff */
-}
-        /* Estilo para el contenedor de la búsqueda */
-        .busqueda-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .input-busqueda {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 25px;
-            width: 300px;
-            margin-right: 10px;
-        }
-
-        .boton-buscar {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #ff212f;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .boton-buscar:hover {
-            background-color: #cc1e26;
-        }
-
-
-iframe {
-            width: 100px; /* Cambia el ancho del reproductor */
-            height: 10px; /* Cambia la altura del reproductor */
-        }
- 
-
-.gallery-container {
-    display: flex;
-    overflow-x: auto;
-    padding: 5px;  /* Padding reducido */
-    gap: 5px;      /* Menor espacio entre ítems */
-}
-
-.gallery-item {
-    flex-shrink: 0;
-    width: 90px;  /* Tamaño más pequeño */
-    height: 135px; /* Tamaño más pequeño */
-    border-radius: 4px;  /* Bordes ligeramente redondeados */
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);  /* Sombra más sutil */
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer; /* Indica que es clickeable */
-}
-        .chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #009bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .chat-button:hover {
-            background-color: #009bff;
-            transform: scale(1.1);
-        }
-
-        .chat-button:active {
-            transform: scale(0.9);
-        }
-
-        /* Contenedor del chat */
-        .chat-container {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 300px;
-            height: 540px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-header {
-            background-color: #009bff;
-            color: white;
-            padding: 10px;
+            color: #fff;
+            font-size: 28px;
+            margin: 20px 0;
             text-align: center;
-            font-weight: bold;
         }
 
-        .chat-frame {
-            flex-grow: 1;
-            border: none;
-            width: 100%;
-            height: 100%;
-        }
-
-video {
-            width: 350px; /* Ancho fijo del video */
-            height: 200px; /* Alto fijo del video */
-            background-color: black;
-        }
-button {
-            width: 90%;
-            max-width: 300px;
+        .header {
+            text-align: center;
             padding: 10px;
-            margin-top: 10px;
+            background-color: #0d0b25;
             font-size: 16px;
-            font-weight: bold;
-            background-color: red;
-            color: white;
+            color: #33aaff;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .search-box {
+            background-color: #ffffff;
+            padding: 2px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .search-box input {
+            background: transparent;
             border: none;
-            cursor: pointer;
+            color: white;
+            outline: none;
+            width: 150px;
+        }
+
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 20px;
+            position: relative; /* Para posicionar los botones en relación con la lista */
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            border-left: 3px solid red;
+            padding-left: 5px;
+        }
+
+        .movie-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .movie-list {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+
+        .movie-list img {
+            width: 100px;
             border-radius: 5px;
         }
 
-        button:hover {
-            background-color: darkred;
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
+        .arrow-left {
+            left: -1px;
+        }
+
+        .arrow-right {
+            right: -1px;
+        }
+
+        @media (orientation: landscape) {
+            .search-box input {
+                width: 250px;
+            }
+            
+            .movie-list img {
+                width: 200px;
+            }
+        }
+        
+        
+        
+.search-box button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease background, 0.2s ease transform;
+}
+
+.search-box button:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+
+.search-box button:active {
+    background: #a00000;
+    transform: scale(0.95);
+}
+
+
+/* Asegurar que todos los elementos puedan ser enfocados */
+* {
+  outline: none; /* Elimina el borde por defecto del navegador */
+}
+
+/* Estilo general para resaltar el enfoque */
+button:focus, a:focus, div:focus, input:focus, textarea:focus, img:focus {
+  outline: 3px solid red; /* Borde brillante de color rojo para resaltar el enfoque */
+  background-color: #555; /* Fondo ligeramente cambiado cuando está enfocado */
+  transform: scale(1.05); /* Agranda el elemento ligeramente */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Para enlaces o elementos interactivos que se ven bien sin que el fondo cambie */
+a:focus {
+  color: red; /* Cambia el color del texto del enlace cuando está enfocado */
+}
+
+/* Opcional: para imágenes o elementos que quieras resaltar sin cambiar su color de fondo */
+img:focus {
+  border: 3px solid red; /* Agrega un borde resaltado de color rojo a las imágenes */
+  transform: scale(1.1); /* Agranda la imagen ligeramente */
+}
+
+/* Si el elemento no tiene un fondo visible, puedes aplicar un enfoque solo con el borde */
+div:focus {
+  border: 2px dashed red; /* Aplica un borde de puntos rojos en los divs */
+}
     </style>
 </head>
 <body>
- 
-    <button class="chat-button" onclick="toggleChat()">💬</button>
+<h1>Evolucion TV</h1>
 
-    <div class="chat-container" id="chatContainer">
-        <div class="chat-header">Chat</div>
-        <iframe class="chat-frame" src="https://evoluciont.chatango.com/"></iframe>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/descargar_app.html">
+    <div class="header">Descarga la app Evolucion TV</div>
+</a>
+
+<div class="search-container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar por genero y nombre ..." oninput="redirectToSearch()">
+        <button onclick="search()">Buscar</button>
     </div>
-    <!-- Título -->
-    <h1>Evolucion TV</h1>
+</div>
 
-    <!-- Formulario de búsqueda -->
-    <div class="busqueda-container">
-        <input type="text" class="input-busqueda" placeholder="Escribe aquí..." id="busqueda" onfocus="buscar()">
-        <button class="boton-buscar" onclick="buscar()">Buscar</button>
-    </div>
-    
+<div class="nav">
 
-<div class="video-container">
-        <video id="liveVideo" controls autoplay muted>
-            Tu navegador no soporta el reproductor de video.
-        </video>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/canales_de_bolivia.html">CANALES</a>
+<a href="https://evoluciont.chatango.com/">CHAT</a>
 
-    </div>
+</div>
 
+<div class="content">
+    <a href="URL_DE_LA_OTRA_PAGINA" style="text-decoration: none; color: inherit;">
+        <div class="section-title">Peliculas de Comedia</div>
+    </a>
+</div>
 
-
-    <button id="redirectButton">VER PELICULA</button>
-
-    <h3>COMEDIA</h3>
-<div class="gallery-container">
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/papa_o_mama.html" target="_blank">
-                <img src="https://images.justwatch.com/poster/311771355/s718/papa-o-mama-2023.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/amigos_pasajeros_2.html" target="_blank">
-                <img src="https://www.ecartelera.com/carteles/18000/18055/002_m.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/como_ser_latin_love.html" target="_blank">
-                <img src="https://zonaaps.com/wp-content/uploads/2024/11/5oOgvJx8D1myuRRyUaTCDCNOYUA-209x300.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/mi_pobre_angelito_5.html" target="_blank">
-                <img src="https://zonaaps.com/wp-content/uploads/2024/11/nxxcHTbqNrEkrJvtCzxzm3TDtU-200x300.jpg" alt="Imagen 2">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/mas_alla_de_los_sue%C3%B1os.html" target="_blank">
-                <img src="https://zonaaps.com/wp-content/uploads/2024/11/8KL5iWGQHuQsKJzuZmkZNYpLnJ9-200x300.jpg" alt="Imagen 1">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="CATEGORIA/COMEDIA.html" target="_blank">
-                <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen 1">
-            </a>
-        </div>
-    </div>
-    <h3>ANIMACION</h3>
-<div class="gallery-container">
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/garfield_la_pel%C3%ADcula.html" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpufh8klBlp73SAVQArsgjwTkttWDE4eUO7Q&s" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/intensamente_2.html" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPmFjPXBnvrYU0nKWH3UlIE_t87p0_zmJjbw&s" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/Wallace_y_Gromitla_venganza_se_sirve_con_plumas.html" target="_blank">
-                <img src="https://pics.filmaffinity.com/Wallace_y_Gromit_La_venganza_se_sirve_con_plumas-947062581-large.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/kung_fu_panda_4.html" target="_blank">
-                <img src="https://media.themoviedb.org/t/p/w188_and_h282_bestv2/nqXsAaQsKw2gKpkfhIgjXNDRqg7.jpg" alt="Imagen 2">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/mi_villano_favorito_4.html" target="_blank">
-                <img src="https://pics.filmaffinity.com/Gru_4_Mi_villano_favorito-802312771-large.jpg" alt="Imagen 1">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="CATEGORIA/ANIMACION.html" target="_blank">
-                <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen 1">
-            </a>
-        </div>
-    </div>
-    <h3>ACCION</h3>
-<div class="gallery-container">
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/mufasa.html" target="_blank">
-                <img src="https://lumiere-a.akamaihd.net/v1/images/wonderwall_instagram_teaser_poster_las_f9b6b48a.jpeg?region=0%2C0%2C800%2C1000" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/el_juego_del_calamar" target="_blank">
-                <img src="https://pics.filmaffinity.com/squid_game_2-988066591-mmed.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/sonic_3" target="_blank">
-                <img src="https://pics.filmaffinity.com/Sonic_3_La_pelaicula-737206072-large.jpg" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ashfall_alerta_roja.html" target="_blank">
-                <img src="https://pics.filmaffinity.com/Alerta_roja-744289733-large.jpg" alt="Imagen 2">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/deadpool_y_wolverine.html" target="_blank">
-                <img src="https://media.themoviedb.org/t/p/w500_and_h282_face/by8z9Fe8y7p4jo2YlW2SZDnptyT.jpg" alt="Imagen 1">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="CATEGORIA/ACCION.html" target="_blank">
-                <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen 1">
-            </a>
-        </div>
-    </div>
-    <h3>CRISTIANA</h3>
-<div class="gallery-container">
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/desafiando_a_los_gigantes.html" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFjo2f2GspuSE_2G8GKAHlDjOamZoVCqAAosddtcvHXg&s" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/cuenta_regresiva.html" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2X0LFgTEMXvkVi9M8RRhjzsVLEuHoMor7hDysi8DSA&s" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/una_batalla_de_fe.html" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfydNDJfjLq2PeLp8klOFwjBCV3vb8BSzeLItEQYopw&s" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/a_prueba_de_fuego.html" target="_blank">
-                <img src="https://tesoroscristianos.co/wp-content/uploads/2020/07/A-Prueba-de-Fuego.jpg" alt="Imagen 2">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/manos_milagrosas.html" target="_blank">
-                <img src="https://tesoroscristianos.co/wp-content/uploads/2020/07/Ben-Carson-Manos-Prodigiosas.jpg" alt="Imagen 1">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="CATEGORIA/CRISTIANA.html" target="_blank">
-                <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen 1">
-            </a>
-        </div>
-    </div>
-    <h3>OTROS</h3>
-<div class="gallery-container">
-        <div class="gallery-item">
-            <a href="canales_de_bolivia.html" target="_blank">
-                <img src="http://imgfz.com/i/LIW7qxu.png" alt="Imagen 3">
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a href="https://maicolyordan.github.io/Evoluci-nTV-/descargar_app.html" target="_blank">
-                <img src="https://play-lh.googleusercontent.com/jMBJujHQ3PKcMtUZPDnXGRJoH7BvGa_Lrvrj2eI_5NLNRJ2Y41CUc30PAI3f0cZhXw" alt="Imagen 3">
-            </a>
-        </div>
-
-    </div>
-    </div>
-    
-
-
-    <script>
-        function buscar() {
-            var busqueda = document.getElementById('busqueda').value;
-            if (busqueda) {
-                // Redirige a la página de búsqueda con el término ingresado como parámetro
-                window.location.href = "https://maicolyordan.github.io/Evoluci-nTV-/BUSQUEDA.html?q=" + encodeURIComponent(busqueda);
-            } else {
-                // Si el campo está vacío, redirige igualmente con un parámetro vacío
-                window.location.href = "https://maicolyordan.github.io/Evoluci-nTV-/BUSQUEDA.html?q=";
-            }
-        }
-
-        function redirigir(url) {
-            // Redirige a la URL especificada
-            window.location.href = url;
-        }
+    <div class="movie-container">
+        <button class="arrow arrow-left" onclick="scrollMovies(-200)">◄</button>
         
-  
- 
-function toggleChat() {
-            var chatContainer = document.getElementById("chatContainer");
-            if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-                chatContainer.style.display = "flex";
-            } else {
-                chatContainer.style.display = "none";
-            }
-        }
-        
-var videos = [
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/A%20prueba%20de%20Fuego.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/CRISTIANA/a_prueba_de_fuego.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/LA%20GUERRA%20DEL%20MA%C3%91ANA.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/la_guerra_del_ma%C3%B1ana.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/MI%20VILLANO%20FAVORITO.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ANIMADO/mi_villano_favorito_4.html" },
-            { url: "https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/TRAILER/Nacho%20Libre.mp4", page: "https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/nacho_libre.html" }
-            
-        ];
-
-        var currentVideoIndex = -1;
-
-        function playRandomVideo() {
-            var newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * videos.length);
-            } while (newIndex === currentVideoIndex); // Evita repetir el mismo video
-
-            currentVideoIndex = newIndex;
-            var selectedVideo = videos[currentVideoIndex];
-
-            var video = document.getElementById('liveVideo');
-            var button = document.getElementById('redirectButton');
-            var tapMessage = document.getElementById('tapMessage');
-
-            video.src = selectedVideo.url;
-            button.onclick = function() {
-                window.location.href = selectedVideo.page;
-            };
-
-            video.muted = true;
-            video.play();
-            
-            tapMessage.style.display = "block"; // Mostrar botón de activar audio
-        }
-
-        function enableAudio() {
-            var video = document.getElementById('liveVideo');
-            var tapMessage = document.getElementById('tapMessage');
-
-            video.muted = false;
-            tapMessage.style.display = "none"; // Ocultar botón de activar sonido
-        }
-
-        document.addEventListener("fullscreenchange", function() {
-            if (document.fullscreenElement) {
-                window.location.href = videos[currentVideoIndex].page;
-            }
-        });
-
-        window.onload = function() {
-            playRandomVideo();
-
-            var video = document.getElementById('liveVideo');
-            video.onended = function() { 
-                playRandomVideo(); // Cambia al siguiente video al terminar
-            };
-        };
-    </script>
-<iframe src="https://evoluciontv9.wordpress.com" width="10" height="10" style="border:1px solid black;">
-        Tu navegador no soporta iframes.
-    </iframe>
+        <div class="movie-list" id="movieList">
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Mentiroso_compulsivo.html">
+    <img src="https://pics.filmaffinity.com/Mentiroso_compulsivo-105787001-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/locuras_en_la_edad_media_el_caballero_negro.html">
+    <img src="https://pics.filmaffinity.com/black_knight-453595155-msmall.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/donde_estan_las_rubias.html">
+    <img src="https://pics.filmaffinity.com/Dos_rubias_de_pelo_en_pecho-361394069-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/shaolin_soccer.html">
+    <img src="https://pics.filmaffinity.com/siu_lam_juk_kau_shaolin_soccer-363514548-mmed.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/nacho_libre.html">
+    <img src="https://pics.filmaffinity.com/nacho_libre-446777855-mmed.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/kung_fu_basket.html">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTU0ODg3Mzc1Ml5BMl5BanBnXkFtZTgwMzQ3NjI2MDE@._V1_.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Son_como_ni%C3%B1os.html">
+    <img src="https://pics.filmaffinity.com/Nianos_grandes-567297059-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Son_como_ni%C3%B1os_2.html">
+    <img src="https://pics.filmaffinity.com/grown_ups_2-137417864-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/de_ladron_a_policia.html">
+    <img src="https://pics.filmaffinity.com/De_ladraon_a_policaia-380401440-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/guerra_de_papas.html">
+    <img src="https://pics.filmaffinity.com/daddy_s_home-974194300-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/un_espia_y_medio.html">
+    <img src="https://pics.filmaffinity.com/Un_espaia_y_medio-743803360-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/una_casa_patas_arriba.html">
+    <img src="https://pics.filmaffinity.com/Una_casa_patas_arriba-395990399-large.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/como_ser_latin_love.html">
+    <img src="https://zonaaps.com/wp-content/uploads/2024/11/5oOgvJx8D1myuRRyUaTCDCNOYUA-209x300.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/papa_o_mama.html">
+    <img src="https://images.justwatch.com/poster/311771355/s718/papa-o-mama-2023.jpg" alt="imagen">
+</a>
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/amigos_pasajeros_2.html">
+    <img src="https://www.ecartelera.com/carteles/18000/18055/002_m.jpg" alt="imagen">
+</a>
+    </div>
     
-    
+        <button class="arrow arrow-right" onclick="scrollMovies(200)">►</button>
+    </div>
+</div>
+
+<iframe src="https://evoluciontv9.wordpress.com" width="50" height="3"></iframe>
+
+
+<script>
+    function scrollMovies(amount) {
+        document.getElementById("movieList").scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    function redirectToPage() {
+    window.location.href = "https://maicolyordan.github.io/Evoluci-nTV-/BUSQUEDA.html"; // Cambia "otra_pagina.html" por la URL deseada
+}
+
+// Redirige al hacer clic en la barra de búsqueda
+document.getElementById("searchInput").addEventListener("focus", function() {
+    redirectToPage();
+});
+
+// Redirige al hacer clic en el botón de búsqueda
+function search() {
+    redirectToPage();
+}
+</script>
 </body>
 </html>
