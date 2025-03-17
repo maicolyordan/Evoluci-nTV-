@@ -1,0 +1,215 @@
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVOLUCION TV</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0b25;
+            color: white;
+        }
+
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            border-left: 3px solid red;
+            padding-left: 5px;
+        }
+
+        
+
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 90%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 5px solid transparent; /* Bordes invisibles por defecto */
+}
+
+
+
+    @media screen and (orientation: landscape) {
+      .image-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+        /* Ajustamos la sección de la cabecera para que esté más arriba */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 5px; /* Reducir aún más el espacio entre la cabecera y la búsqueda */
+        }
+
+        /* Estilos para el botón de casa */
+        .home-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .home-button svg {
+            fill: white;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Estilos para el título */
+        .titulo {
+            font-size: 24px;
+            margin-left: 10px;
+            color: white;
+        }
+    
+    
+/* Asegurar que todos los elementos puedan ser enfocados */
+* {
+  outline: none; /* Elimina el borde por defecto del navegador */
+}
+
+/* Estilo general para resaltar el enfoque */
+button:focus, a:focus, div:focus, input:focus, textarea:focus, img:focus {
+  outline: 3px solid red; /* Borde brillante de color rojo para resaltar el enfoque */
+  background-color: #555; /* Fondo ligeramente cambiado cuando está enfocado */
+  transform: scale(1.05); /* Agranda el elemento ligeramente */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Para enlaces o elementos interactivos que se ven bien sin que el fondo cambie */
+a:focus {
+  color: red; /* Cambia el color del texto del enlace cuando está enfocado */
+}
+
+/* Opcional: para imágenes o elementos que quieras resaltar sin cambiar su color de fondo */
+img:focus {
+  border: 3px solid red; /* Agrega un borde resaltado de color rojo a las imágenes */
+  transform: scale(1.1); /* Agranda la imagen ligeramente */
+}
+
+/* Si el elemento no tiene un fondo visible, puedes aplicar un enfoque solo con el borde */
+div:focus {
+  border: 2px dashed red; /* Aplica un borde de puntos rojos en los divs */
+}
+  </style>
+
+    <div class="header-container">
+        <!-- Botón de casa -->
+        <button class="home-button" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </button>
+        
+ <!-- Título -->
+        <h1 class="titulo">Evolucion TV</h1>
+    </div>
+
+<div class="content">
+    <a  style="text-decoration: none; color: inherit;">
+        <div class="section-title">Peliculas de Comedia</div>
+    </a>
+</div>
+
+
+  <div class="image-container">
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Mentiroso_compulsivo.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Mentiroso_compulsivo-105787001-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/locuras_en_la_edad_media_el_caballero_negro.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/black_knight-453595155-msmall.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/donde_estan_las_rubias.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Dos_rubias_de_pelo_en_pecho-361394069-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/shaolin_soccer.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/siu_lam_juk_kau_shaolin_soccer-363514548-mmed.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/nacho_libre.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/nacho_libre-446777855-mmed.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/kung_fu_basket.html" target="_blank">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTU0ODg3Mzc1Ml5BMl5BanBnXkFtZTgwMzQ3NjI2MDE@._V1_.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Son_como_ni%C3%B1os.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Nianos_grandes-567297059-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/Son_como_niños_2.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/grown_ups_2-137417864-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/de_ladron_a_policia.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/De_ladraon_a_policaia-380401440-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/guerra_de_papas.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/daddy_s_home-974194300-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/un_espia_y_medio.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Un_espaia_y_medio-743803360-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/una_casa_patas_arriba.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Una_casa_patas_arriba-395990399-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/papa_o_mama.html" target="_blank">
+      <img src="https://www.justwatch.com/images/poster/311771355/s718/papa-o-mama-2023.jpgg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/amigos_pasajeros_2.html" target="_blank">
+      <img src="https://www.ecartelera.com/carteles/18000/18055/002_m.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/como_ser_latin_love.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/11/5oOgvJx8D1myuRRyUaTCDCNOYUA-209x300.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/mi_pobre_angelito_5.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/11/nxxcHTbqNrEkrJvtCzxzm3TDtU-200x300.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/mas_alla_de_los_sue%C3%B1os.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/11/8KL5iWGQHuQsKJzuZmkZNYpLnJ9-200x300.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/plan_en_familia.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/10/7mEX07jWRYrjarW84sBeFghGMfa-200x300.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/padre_no_hay_mas_que_uno.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/01/eDLO2nr5xhjOfxDAj3gQao495kw-160x240.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/padre_no_hay_mas_que_uno_3.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/07/k2v9xSPtiyxCNxaRGtj7COwdgG3-160x240.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/padre_no_hay_mas_que_uno_4.html" target="_blank">
+      <img src="https://zonaaps.com/wp-content/uploads/2024/10/hTMvGolGJLF0GQ7mlwNjbXpsPZ-160x240.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/una_novata_en_cuento_de_adas.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Una_novata_en_un_cuento_de_hadas_Sydney_White-758183536-large.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/las_travesuras_de_una_sirena.html" target="_blank">
+      <img src="https://image.tmdb.org/t/p/original/BcSX4ymaGR2zGjmASkuyf4rp1L.jpg" alt="Imagen">
+    </a>
+    <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/paddington_aventura_en_la_selva.html" target="_blank">
+      <img src="https://pics.filmaffinity.com/Paddington_Aventura_en_la_selva-651689640-large.jpg" alt="Imagen">
+    </a>
+    <!-- Si agregas más imágenes, se colocarán en filas adicionales -->
+
+   <iframe src="https://evoluciontv9.wordpress.com/comedia/" width="50" height="3"></iframe>
+
+
+
+</script>
+  </div>
+</body>
+</html>
