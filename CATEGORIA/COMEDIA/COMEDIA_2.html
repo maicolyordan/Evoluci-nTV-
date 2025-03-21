@@ -1,0 +1,169 @@
+      <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVOLUCION TV</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0b25;
+            color: white;
+        }
+
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            border-left: 3px solid red;
+            padding-left: 5px;
+        }
+
+        
+
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 90%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 5px solid transparent; /* Bordes invisibles por defecto */
+}
+
+
+
+    @media screen and (orientation: landscape) {
+      .image-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+        /* Ajustamos la sección de la cabecera para que esté más arriba */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 5px; /* Reducir aún más el espacio entre la cabecera y la búsqueda */
+        }
+
+        /* Estilos para el botón de casa */
+        .home-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .home-button svg {
+            fill: white;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Estilos para el título */
+        .titulo {
+            font-size: 24px;
+            margin-left: 10px;
+            color: white;
+        }
+    
+button {
+            background-color: #f44336; /* Rojo */
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+        }
+    
+/* Asegurar que todos los elementos puedan ser enfocados */
+* {
+  outline: none; /* Elimina el borde por defecto del navegador */
+}
+
+/* Estilo general para resaltar el enfoque */
+button:focus, a:focus, div:focus, input:focus, textarea:focus, img:focus {
+  outline: 3px solid red; /* Borde brillante de color rojo para resaltar el enfoque */
+  background-color: #555; /* Fondo ligeramente cambiado cuando está enfocado */
+  transform: scale(1.05); /* Agranda el elemento ligeramente */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Para enlaces o elementos interactivos que se ven bien sin que el fondo cambie */
+a:focus {
+  color: red; /* Cambia el color del texto del enlace cuando está enfocado */
+}
+
+/* Opcional: para imágenes o elementos que quieras resaltar sin cambiar su color de fondo */
+img:focus {
+  border: 3px solid red; /* Agrega un borde resaltado de color rojo a las imágenes */
+  transform: scale(1.1); /* Agranda la imagen ligeramente */
+}
+
+/* Si el elemento no tiene un fondo visible, puedes aplicar un enfoque solo con el borde */
+div:focus {
+  border: 2px dashed red; /* Aplica un borde de puntos rojos en los divs */
+}
+  </style>
+
+    <div class="header-container">
+        <!-- Botón de casa -->
+        <button class="home-button" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </button>
+        
+ <!-- Título -->
+        <h1 class="titulo">Evolucion TV</h1>
+    </div>
+
+<div class="content">
+    <a  style="text-decoration: none; color: inherit;">
+        <div class="section-title">Peliculas de Comedia 2</div>
+    </a>
+</div>
+
+
+  <div class="image-container">
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/COMEDIA_2/Dioses_Yankee_Zulu.html"> <img src="https://pics.filmaffinity.com/Yankee_Zulu-702377302-large.jpg" alt="Imagen"> </a> 
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/COMEDIA_2/Los_tres_dragones_1988.html"> <img src="https://pics.filmaffinity.com/Los_tres_dragones_Dragons_Forever-205687674-large.jpg" alt="Imagen "> </a> 
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/COMEDIA_2/Merlina_2022.html"> <img src="https://pics.filmaffinity.com/Miaercoles_Serie_de_TV-938002261-large.jpg" alt="Imagen"> </a> 
+  </div>
+  
+<button onclick="location.href='https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/COMEDIA/COMEDIA.html'">Anterior</button>
+   
+  </div>
+  <h1></h1>
+    <!-- Si agregas más imágenes, se colocarán en filas adicionales -->
+<iframe src="https://evoluciontv9.wordpress.com/accion_2/" width="50" height="3"></iframe>
+<script>
+
+
+
+</script>
+  </div>
+</body>
+</html>
