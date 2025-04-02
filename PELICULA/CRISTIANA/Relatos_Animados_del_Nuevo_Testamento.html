@@ -1,0 +1,295 @@
+ <html lang="es">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Relatos Animados del Nuevo Testamento </title> 
+  <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Contenedor de los controles */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Botones y selects */
+select, button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+select {
+    background: #ffffff;
+    color: #000000;
+}
+
+button {
+    background: #ff4d4d;
+    color: white;
+}
+
+button:hover {
+    background: #e60000;
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    padding-top: 56.25%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#fondoIframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://github.com/maicolyordan/Evoluci-nTV-/raw/refs/heads/Html/FONDO.png') no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#volver-inicio {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+p {
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Modo horizontal (pantallas anchas) */
+@media (orientation: landscape) {
+    .container {
+        max-width: 800px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+        width: 40%;
+    }
+
+    .server-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 50%;
+    }
+
+    .server-buttons button {
+        flex: 1;
+    }
+}
+
+/* Modo escritorio */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 900px;
+        padding: 30px;
+        border-radius: 20px;
+    }
+
+    .iframe-container {
+        padding-top: 56.25%;  /* Mantener la relación de aspecto */
+        max-width: 100%;
+    }
+
+    iframe {
+        height: 100%;  /* Mantener el iframe a su altura natural */
+    }
+}
+  </style> 
+ </head> 
+ <body> 
+  <button id="volver-inicio" onclick="window.location.href='https://maicolyordan.github.io/Evoluci-nTV-/IMAGEN/Directoinicio.html';"> VOLVER AL INICIO </button> 
+  <h1>Relatos Animados del Nuevo Testamento</h1> 
+  <div class="container"> 
+   <select id="temporadas"><option value="">Selecciona Temporada</option><option value="1">Temporada 1</option></select> 
+   <select id="capitulos"><option value="">Selecciona Capítulo</option><option value="1">Capítulo 1</option><option value="2">Capítulo 2</option><option value="3">Capítulo 3</option><option value="4">Capítulo 4</option><option value="5">Capítulo 5</option><option value="6">Capítulo 6</option><option value="7">Capítulo 7</option><option value="8">Capítulo 8</option><option value="9">Capítulo 9</option><option value="10">Capítulo 10</option><option value="11">Capítulo 11</option><option value="12">Capítulo 12</option>
+   <option value="13">Capítulo 13</option><option value="14">Capítulo 14</option><option value="15">Capítulo 15</option><option value="16">Capítulo 16</option><option value="17">Capítulo 17</option><option value="18">Capítulo 18</option><option value="19">Capítulo 19</option><option value="20">Capítulo 20</option><option value="21">Capítulo 21</option><option value="22">Capítulo 22</option><option value="23">Capítulo 23</option><option value="24">Capítulo 24</option>
+   </select> 
+   <button onclick="cargarCapitulo(1)">Ver en opción 1</button> 
+   <button onclick="cargarCapitulo(2)">Ver en opción 2</button> 
+  </div> 
+  <div class="iframe-container"> 
+   <div id="fondoIframe" onclick="ocultarFondo()" style="display: block;"></div> 
+   <iframe id="secureFrame" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media" src="https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/Y/S/y/8/YSy8t.aaa.mp4"></iframe> 
+  </div> 
+  <p> La serie es una colección educativa no sectaria de historias de la Biblia hebrea, destinada a fomentar valores positivos y rasgos de carácter en los jóvenes.</p> 
+  <script>
+    const seriesData = {
+      "1": {
+        "capitulos": {
+          "1": { "servidor1": "https://ok.ru/videoembed/3400471284297", "servidor2": "https://example.com/cap2-alt" },
+          "2": { "servidor1": "https://ok.ru/videoembed/3400470301257", "servidor2": "https://example.com/cap2-alt" },
+          "3": { "servidor1": "https://ok.ru/videoembed/3400471480905", "servidor2": "https://example.com/cap2-alt" },
+          "4": { "servidor1": "https://ok.ru/videoembed/3400471611977", "servidor2": "https://example.com/cap2-alt" },
+          "5": { "servidor1": "https://ok.ru/videoembed/3400470432329", "servidor2": "https://example.com/cap2-alt" },
+          "6": { "servidor1": "https://ok.ru/videoembed/3400469908041", "servidor2": "https://example.com/cap2-alt" },
+          "7": { "servidor1": "https://ok.ru/videoembed/3400470760009", "servidor2": "https://example.com/cap2-alt" },
+          "8": { "servidor1": "https://ok.ru/videoembed/3400471415369", "servidor2": "https://example.com/cap2-alt" },
+          "9": { "servidor1": "https://ok.ru/videoembed/3400470891081", "servidor2": "https://example.com/cap2-alt" },
+          "10": { "servidor1": "https://ok.ru/videoembed/3400471349833", "servidor2": "https://example.com/cap2-alt" },
+          "11": { "servidor1": "https://ok.ru/videoembed/3400470104649", "servidor2": "https://example.com/cap2-alt" },
+          "12": { "servidor1": "https://ok.ru/videoembed/3400471677513", "servidor2": "https://example.com/cap2-alt" },
+
+          "13": { "servidor1": "https://ok.ru/videoembed/3400471218761", "servidor2": "https://example.com/cap2-alt" },
+          "14": { "servidor1": "https://ok.ru/videoembed/3400471153225", "servidor2": "https://example.com/cap2-alt" },
+          "15": { "servidor1": "https://ok.ru/videoembed/3400470235721", "servidor2": "https://example.com/cap2-alt" },
+          "16": { "servidor1": "https://ok.ru/videoembed/3400470563401", "servidor2": "https://example.com/cap2-alt" },
+          "17": { "servidor1": "https://ok.ru/videoembed/3400470694473", "servidor2": "https://example.com/cap2-alt" },
+          "18": { "servidor1": "https://ok.ru/videoembed/3400471087689", "servidor2": "https://example.com/cap2-alt" },
+          "19": { "servidor1": "https://ok.ru/videoembed/3400470170185", "servidor2": "https://example.com/cap2-alt" },
+          "20": { "servidor1": "https://ok.ru/videoembed/3400470956617", "servidor2": "https://example.com/cap2-alt" },
+          "21": { "servidor1": "https://ok.ru/videoembed/3400470366793", "servidor2": "https://example.com/cap2-alt" },
+          "22": { "servidor1": "https://ok.ru/videoembed/3400470039113", "servidor2": "https://example.com/cap2-alt" },
+          "23": { "servidor1": "https://ok.ru/videoembed/3400470825545", "servidor2": "https://example.com/cap2-alt" },
+          "24": { "servidor1": "https://ok.ru/videoembed/3400470497865", "servidor2": "https://example.com/cap2-alt" }
+
+
+          
+        }
+      },
+
+
+    };
+
+    const temporadasSelect = document.getElementById("temporadas");
+    const capitulosSelect = document.getElementById("capitulos");
+    const iframe = document.getElementById("secureFrame");
+    const fondoIframe = document.getElementById("fondoIframe");
+
+    function cargarTemporadas() {
+      temporadasSelect.innerHTML = "<option value=''>Selecciona Temporada</option>";
+      Object.keys(seriesData).forEach(temp => {
+        const option = document.createElement("option");
+        option.value = temp;
+        option.textContent = "Temporada " + temp;
+        temporadasSelect.appendChild(option);
+      });
+
+      temporadasSelect.value = "1";
+      cargarCapitulos();
+    }
+
+    function cargarCapitulos() {
+      const temporadaSeleccionada = temporadasSelect.value;
+      capitulosSelect.innerHTML = "<option value=''>Selecciona Capítulo</option>";
+
+      if (temporadaSeleccionada && seriesData[temporadaSeleccionada]) {
+        Object.keys(seriesData[temporadaSeleccionada].capitulos).forEach(cap => {
+          const option = document.createElement("option");
+          option.value = cap;
+          option.textContent = "Capítulo " + cap;
+          capitulosSelect.appendChild(option);
+        });
+
+        capitulosSelect.value = "1";
+        cargarCapitulo(1);
+      }
+    }
+
+    function cargarCapitulo(servidor) {
+      const temporadaSeleccionada = temporadasSelect.value;
+      const capituloSeleccionado = capitulosSelect.value;
+
+      if (temporadaSeleccionada && capituloSeleccionado) {
+        const capituloData = seriesData[temporadaSeleccionada].capitulos[capituloSeleccionado];
+
+        if (capituloData) {
+          iframe.src = capituloData[`servidor${servidor}`];
+          mostrarIframe();
+        }
+      } else {
+        alert("Seleccione una temporada y un capítulo.");
+      }
+    }
+
+    capitulosSelect.addEventListener("change", () => {
+      cargarCapitulo(1);
+    });
+
+    function ocultarFondo() {
+      fondoIframe.style.display = "none";
+    }
+
+    function mostrarIframe() {
+      fondoIframe.style.display = "block";
+    }
+
+    window.addEventListener("load", cargarTemporadas);
+</script> 
+ </body>
+</html>
+
+
+
