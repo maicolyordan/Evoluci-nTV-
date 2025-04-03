@@ -1,127 +1,126 @@
-<!DOCTYPE html>
-<html lang="es">
+ <!DOCTYPE html><html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación EVOLUCION TV</title>
+    <title>Evolucion TV</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
             margin: 0;
             padding: 0;
-            background: url('https://i0.wp.com/robbreport.mx/wp-content/uploads/2019/05/peliculas.png?fit=892%2C756&ssl=1') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            height: 100vh;
         }
-
         .container {
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5);
+            width: 360px;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
         }
-
-        h1 {
-            font-size: 50px;
-            color: #FF6347;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 15px rgba(255, 99, 71, 0.8);
-            animation: fadeIn 2s ease-out;
-        }
-
-        p {
+        .title {
             font-size: 22px;
-            margin: 15px 0;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            line-height: 1.5;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 2s ease-out;
-        }
-
-        .btn {
-            padding: 18px 35px;
-            background-color: #FF6347;
-            color: white;
-            font-size: 22px;
-            border: none;
-            cursor: pointer;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            margin-top: 30px;
-            box-shadow: 0px 6px 25px rgba(255, 99, 71, 0.4);
-            animation: fadeIn 2s ease-out;
-        }
-
-        .btn:hover {
-            background-color: #FF4500;
-            transform: scale(1.1);
-            box-shadow: 0px 6px 30px rgba(255, 69, 0, 0.6);
-        }
-
-        .footer {
-            font-size: 14px;
-            margin-top: 50px;
-            color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-            width: 100%;
-            animation: fadeIn 2s ease-out;
-        }
-
-        .footer a {
-            color: #FF6347;
-            text-decoration: none;
             font-weight: bold;
         }
-
-        /* Diseño responsivo */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            p {
-                font-size: 18px;
-            }
-
-            .btn {
-                padding: 15px 30px;
-                font-size: 18px;
-            }
+        .subtitle {
+            color: gray;
+            font-size: 14px;
+        }
+        .category {
+            background-color: #23a455;
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            background: url('https://i.ibb.co/tMQpMqvJ/37-sin-t-tulo-20250315194705.png') no-repeat center;
+            background-size: cover;
+            margin: 15px auto;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .download, .telegram {
+            text-align: center;
+            padding: 12px;
+            width: 90%;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .download {
+            background-color: #fd4949;
+            color: black;
         }
 
-        /* Animación de aparición */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .details {
+            background-color: #111;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .description {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: justify;
+            padding: 10px;
+            background-color: #181818;
+            border-radius: 8px;
+        }
+        .rating {
+            margin-top: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .google-play {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .google-play img {
+            width: 130px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Aplicación EVOLUCION TV</h1>
-        <p>Disfruta de las mejores películas, series y contenido exclusivo con EVOLUCION TV. ¡Descarga ahora y comienza a ver contenido de calidad en tu dispositivo!</p>
+        <div class="title">Evolucion TV</div>
 
-        <div class="btn" id="btn-public-dl" onclick="window.location.href='https://icedrive.net/s/zVj6R6bitGYaFtBfZZ7FZChP5yFC';">
-            Descargar ahora
+        <div class="category">Entretenimiento</div>
+        <div class="app-icon"></div>
+        <div class="buttons">
+            <a href="https://icedrive.net/s/zwz2S92GAtfCwtivyWXFax58DQZV" class="download">DESCARGAR</a>
+        </div>
+        <div class="details">
+            
+            <p><strong>Actualización:</strong> 3 de abril 2025</p>
+            <p><strong>Tamaño:</strong> 4 MB</p>
+            <p><strong>Versión:</strong> 3.0.0.</p>
+            <p><strong>Requerimientos:</strong> Android 4.0+</p>
         </div>
 
+        <div class="description">
+            Evolución TV es la mejor opción para disfrutar de películas, series y canales en vivo de forma totalmente gratuita. Con una búsqueda rápida y eficiente, encontrarás fácilmente tu contenido favorito sin complicaciones.
+        </div>
+    
 <iframe src="https://evoluciontv9.wordpress.com/descargar-app/" width="50" height="3"></iframe>
 
-        <div class="footer">
-            <p>&copy; 2025 Evolución TV  </p>
-        </div>
     </div>
 </body>
 </html>
