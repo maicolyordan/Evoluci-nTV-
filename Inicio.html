@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -51,29 +51,59 @@
         }
 
 
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 10px;
-        }
+/* botones delgado */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+}
 
-        .nav a {
-            color: white;
-            text-decoration: none;
-        }
+.nav {
+    display: flex;
+    flex-wrap: wrap; /* Permite varias filas si hay muchos botones */
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid white;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
 
         .content {
             padding: 20px;
             position: relative; /* Para posicionar los botones en relación con la lista */
         }
 
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            border-left: 3px solid red;
-            padding-left: 5px;
-        }
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    border-left: 3px solid red;
+    padding-left: 10px;
+}
+
+.see-more {
+    font-size: 15px;
+    font-weight: normal;
+    color: #ff0b0b;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+
+
+
+
 
         .movie-container {
             position: relative;
@@ -198,13 +228,70 @@ div:focus {
 <a href="https://maicolyordan.github.io/Evoluci-nTV-/canales_de_bolivia.html">CANALES</a>
 <a href="https://evoluciont.chatango.com/">CHAT</a>
 <a href="https://chat.whatsapp.com/HFPPpQn0g5g2osaZbz4tTt">grupo de WhatsApp</a>
- 
+
 </div>
 
+
+ 
+   
+
+
 <div class="content">
-    <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/COMEDIA/COMEDIA.html" style="text-decoration: none; color: inherit;">
-        <div class="section-title">Peliculas de Comedia</div>
-    </a>
+
+        <div class="section-title">Peliculas de Recomendadas
+  <a href="" class="see-more"></a>
+    
+
+
+</div>
+</div>
+</div>
+     
+    <div class="movie-container">
+        <button class="arrow arrow-left" onclick="scrollMovies(-200)">◄</button>
+        
+        <div class="movie-list" id="movieList">
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/Escuadron_6.html"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqmTOjWGbnB9zAtORTIuQmIpqai21YdcZCaA&s" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ACCION_2/Viaje_2_La_Isla_Misterio_2012.html"> <img src="https://pics.filmaffinity.com/Viaje_al_centro_de_la_Tierra_2_La_isla_misteriosa-494914470-large.jpg" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/COMEDIA_2/Merlina_2022.html"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjXmmZ9pEhOQJOABU1hLh_dTw-QmPm7DSOyA&s" alt="Imagen"> </a>
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/las_travesuras_de_una_sirena.html"> <img src="https://image.tmdb.org/t/p/original/BcSX4ymaGR2zGjmASkuyf4rp1L.jpg" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/capitan_am%C3%A9rica_un_nuevo_mundo.html"> <img src="https://pics.filmaffinity.com/Capitaan_Amaerica_Brave_New_World-662915584-large.jpg" alt="Imagen"> </a>
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ACCION_2/Proyecto_Extraccion_2023.html"> <img src="https://pics.filmaffinity.com/hidden_strike-740453179-mmed.jpg" alt="Imagen"> </a>
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ACCION_2/Piratas_del_Caribe_2.html"> <img src="https://pics.filmaffinity.com/Piratas_del_Caribe_El_cofre_del_hombre_muerto-498963663-large.jpg" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ACCION_2/Junto_A_Los_Dioses_Los_Ultimos_49_Dias.html"> <img src="https://pics.filmaffinity.com/Along_with_the_Gods_Los_aultimos_49_daias-309527284-large.jpg" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/ACCION_2/Junto_a_los_Dioses_Los_Dos_Mundos.html"> <img src="https://pics.filmaffinity.com/Along_with_the_Gods_Los_dos_mundos-415510433-large.jpg" alt="Imagen"> </a>
+ 
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/un_espia_y_medio.html"> <img src="https://pics.filmaffinity.com/Un_espaia_y_medio-743803360-large.jpg" alt="Imagen"> </a>
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/COMEDIA_2/Minecraft_la_Pel%C3%ADcula.html"> <img src="https://pics.filmaffinity.com/a_minecraft_movie-227832687-mmed.jpg" alt="Imagen "> </a>
+    </div>
+    
+    
+
+        <button class="arrow arrow-right" onclick="scrollMovies(200)">►</button>
+    </div>
+</div>
+
+
+
+<div class="content">
+
+        <div class="section-title">Peliculas de Comedia
+  <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/COMEDIA/COMEDIA.html" class="see-more">ver mas</a>
+    
+
+
+</div>
+</div>
 </div>
 
     <div class="movie-container">
@@ -256,7 +343,8 @@ div:focus {
 <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/COMEDIA/amigos_pasajeros_2.html">
     <img src="https://www.ecartelera.com/carteles/18000/18055/002_m.jpg" alt="imagen">
 </a>
-
+ 
+ <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/COMEDIA/COMEDIA.html"> <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen "> </a>
     </div>
     
     
@@ -273,9 +361,10 @@ div:focus {
     
     
 <div class="content">
-    <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ANIMACION/ANIMACION.html" style="text-decoration: none; color: inherit;">
-        <div class="section-title">Peliculas de Animacion</div>
-    </a>
+
+        <div class="section-title">Peliculas de Animacion  <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ANIMACION/ANIMACION.html" class="see-more">ver mas
+        </div></a>
+    
 </div>
      
     <div class="movie-container">
@@ -314,8 +403,9 @@ div:focus {
 
 <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/moana_2.html"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToaOog58AtXmtr5NbhMUMYH07CE7SB1jrrzg&s" alt="Imagen"> </a> 
 
-
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ANIMACION/ANIMACION.html"> <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen "> </a>
     </div>
+    
     
 
         <button class="arrow arrow-right" onclick="scrollMovies(200)">►</button>
@@ -324,9 +414,9 @@ div:focus {
 
     
 <div class="content">
-    <a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ACCION/ACCION.html" style="text-decoration: none; color: inherit;">
-        <div class="section-title">Peliculas de Accion</div>
-    </a>
+   
+        <div class="section-title">Peliculas de Accion<a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ACCION/ACCION.html" class="see-more">ver mas
+        </div></a>
 </div>
      
     <div class="movie-container">
@@ -363,6 +453,8 @@ div:focus {
 <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/alien_romulus.html"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkZtVybK1lHzfK1llmTbiHZ8vThTEvxka6KQ&s" alt="Imagen "> </a> 
 
 <a href="https://maicolyordan.github.io/Evoluci-nTV-/PELICULA/ACCION/godzilla_y_kong_el_nuevo_imperio.html"> <img src="https://pics.filmaffinity.com/Godzilla_y_Kong_El_nuevo_imperio-478803486-large.jpg" alt="Imagen "> </a>
+
+<a href="https://maicolyordan.github.io/Evoluci-nTV-/CATEGORIA/ACCION/ACCION.html"> <img src="https://raw.githubusercontent.com/maicolyordan/Evoluci-nTV-/refs/heads/Html/IMAGEN/mas_peliculas.png" alt="Imagen "> </a>
     </div>
     
 
