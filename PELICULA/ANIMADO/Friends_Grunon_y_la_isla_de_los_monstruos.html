@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/243748637204" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+  
   <!-- Texto adicional debajo del iframe --> 
   <p> Mar adentro, envuelta en la niebla, existe una misteriosa isla que se dice que es el hogar de una familia de monstruos. Está terminantemente prohibido acercarse a ella. Pero un día un niño humano, Champiñón, se pierde y acaba encontrándose cara a cara con las misteriosas criaturas que habitan allí. La llegada de Champiñón, hace cundir el pánico en la isla porque en realidad son los monstruos los que viven aterrorizados de los humanos. Así pues, confían el cuidado del pequeño al irascible Gruñon. Al principio, Gruñon y Champiñón chocan constantemente, pero al pasar tiempo juntos, acaba formándose un vínculo inseparable entre ellos. ¿Será su amistad capaz de imponerse al tabú que asegura que monstruos y humanos no pueden ser amigos?</p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/243748637204";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
