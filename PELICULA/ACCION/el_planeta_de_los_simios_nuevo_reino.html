@@ -26,6 +26,9 @@
     </iframe>
   </div>
 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+
+  
   <script>
     // Lista de URLs permitidas
     const allowedURLs = [
@@ -78,11 +81,28 @@
     if (window.location.href.startsWith("data:text")) {
       document.body.innerHTML = `<h1 style='color: red;'>Acceso bloqueado</h1>`;
     }
+
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
 <p>
   desgarrador que lo hará cuestionar todo lo que sabía sobre el pasado y tomar decisiones que definirán el futuro tanto de simios como humanos.
   </p>
 
-
+ 
 </body>
 </html>
