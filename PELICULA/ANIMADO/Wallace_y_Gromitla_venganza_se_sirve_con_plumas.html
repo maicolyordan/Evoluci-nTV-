@@ -24,7 +24,7 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://aqua.valentina.top:443/hKCOx-lXyfcgG2o-cWkpbl2MsC31lmLXntPYd9MK99QsC9wPbQCtyUqWwwa9v1igW5gA9oUqxwSYwUlw5_hOww/ABJIqzI1Ctq-umh2xcbgXqGNaRmS16v4UjP3nof-fT4/720.m3u8" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
-  
+  <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
 
   <!-- Texto adicional debajo del iframe --> 
   <p>  El superperro Gromit entra en acción para salvar a su amo cuando Wallace pierde el control de su sofisticado invento y acaba acusado de una serie de crímenes sospechosos.
@@ -59,7 +59,22 @@
       iframe.src = "https://1a-1791.com/video/fwe1/f8/s8/2/f/7/J/m/f7Jmw.aaa.mp4";
     });
     
-    
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
