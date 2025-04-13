@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/7253562886758" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+
+  <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
   <!-- Texto adicional debajo del iframe --> 
   <p> Orión, un niño con una gran imaginación, se enfrenta a sus miedos en un inolvidable viaje nocturno con su nuevo amigo: Oscuridad, una criatura gigante y sonriente.</p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/7253562886758";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
