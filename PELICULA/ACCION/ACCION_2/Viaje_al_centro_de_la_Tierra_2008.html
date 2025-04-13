@@ -31,7 +31,10 @@
       allow="fullscreen; autoplay; encrypted-media">
     </iframe>
   </div>
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
 
+
+      
   <!-- Texto adicional debajo del iframe -->
   <p>
     Durante una expedición científica en Islandia, el científico y visionario Trevor Anderson, su sobrino Sean y la bella guía local, Hannah, quedan inesperadamente atrapados en una cueva y la única forma de escape posible les lleva a adentrarse cada vez más en las entrañas de la tierra.
@@ -66,6 +69,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://player.viloud.tv/embed/play?url=https://hugh.cdn.rumble.cloud/video/fww1/4e/s8/2/G/i/0/s/Gi0sy.aaa.mp4";
     });
+
+        function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
   
 </body>
