@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/7447120317060" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+  
   <!-- Texto adicional debajo del iframe --> 
   <p> Megamind es el supervillano más brillante que el mundo haya conocido. Y el que menos éxito tiene. Durante años, ha estado intentando conquistar Metro City por todos los medios posibles. Cada intento constituye un fracaso, por culpa de Metro Man, un héroe invencible hasta que Megamind consigue matarlo. De repente, la vida de Megamind carece de sentido. ¿Qué puede hacer un supervillano sin un superhéroe con el que enfrentarse?. Crear a Titán, un nuevo héroe más fuerte que Metro Man. Pero Titán empieza a pensar que es mucho más divertido ser malo que ser bueno. Además, Titán no se propone conquistar el mundo, sino destruirlo. ¿Podrá derrotar Megamind a su diabólica criatura? </p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/7447120317060";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
