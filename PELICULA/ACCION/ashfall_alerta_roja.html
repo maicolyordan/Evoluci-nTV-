@@ -26,6 +26,9 @@
     </iframe>
   </div>
 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+
+  
   <script>
     // Lista de URLs permitidas
     const allowedURLs = [
@@ -78,6 +81,23 @@
     if (window.location.href.startsWith("data:text")) {
       document.body.innerHTML = `<h1 style='color: red;'>Acceso bloqueado</h1>`;
     }
+
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
 <p>
   Un volcán en la montaña Baekdu entra en erupción de repente. El pandemonio se produce en la península de Corea, con más erupciones previstas en el área. Para evitar otro desastre, Jeon Yoo Kyung planea una operación basada en una teoría del profesor Kang Bong Rae. Él había estudiado la montaña Baekdu y sus posibles erupciones. Jo In Chang es el capitán de un equipo de fuerzas especiales. Tiene la tarea de participar en la operación, que mantiene el destino de Corea del Sur y del Norte en juego. Jo In Chang contacta a Lee Joon Pyeong quien es parte del Ministerio de las Fuerzas Armadas del Pueblo de Corea del Norte. Mientras tanto, la esposa de Jo In Chang, Choi Ji Young está sola en Seúl. Ella lucha por sobrevivir contra el desastre.
