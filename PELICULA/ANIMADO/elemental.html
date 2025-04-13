@@ -23,7 +23,7 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://sagitario98.com/wetflixx.php?link=https://pomf2.lain.la/f/1jquvxko.mp4?aa?download=1" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
-  
+  <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
 
   <!-- Texto adicional debajo del iframe --> 
   <p>  El vigésimo séptimo largometraje de Pixar está ambientado en una ciudad en la que conviven seres elementales: pertenecientes al fuego, al agua, la tierra y el aire. La historia sigue a Ember y Wade, una joven fogosa y un chico que se deja llevar por la corriente, que acaban descubriendo lo mucho que tienen en común. Elemental está dirigida por Peter Sohn, que ya dirigió El viaje de Arlo y Denise Ream -que también trabajó en dicho filme, así como en Cars 2- se encarga de la producción.
@@ -58,7 +58,22 @@
       iframe.src = "https://sagitario98.com/wetflixx.php?link=https://pomf2.lain.la/f/1jquvxko.mp4?aa?download=1";
     });
     
-    
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
