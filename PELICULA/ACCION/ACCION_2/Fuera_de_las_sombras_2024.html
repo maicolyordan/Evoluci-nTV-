@@ -31,6 +31,7 @@
       allow="fullscreen; autoplay; encrypted-media">
     </iframe>
   </div>
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
 
   <!-- Texto adicional debajo del iframe -->
   <p>
@@ -66,6 +67,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/fww1/31/s8/2/G/7/r/t/G7rty.aaa.mp4";
     });
+
+        function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
   
 </body>
