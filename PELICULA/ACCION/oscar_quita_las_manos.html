@@ -28,6 +28,8 @@
     <iframe id="videoFrame" src="https://www.youtube.com/embed/3ZJT6_YiluA" allowfullscreen></iframe>
   </div>
 
+ 
+ </div><button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>  
   <!-- Texto adicional debajo del iframe -->
   <p>
     Un famoso contrabandista promete a su padre, cuando éste está a punto de fallecer, convertirse en un hombre decente y devolver la honra al nombre de la familia. Pero naturalmente, el paso a la honradez no le resultará fácil y tendrá que enfrentarse a parientes, amigos y enemigos
@@ -42,6 +44,21 @@
     function hideOverlay() {
       document.getElementById('overlay').style.display = 'none';
     }
+
+
+   function goFullScreen() {  
+  if (iframe.requestFullscreen) {  
+    iframe.requestFullscreen();  
+  } else if (iframe.webkitRequestFullscreen) {  
+    iframe.webkitRequestFullscreen();  
+  } else if (iframe.mozRequestFullScreen) {  
+    iframe.mozRequestFullScreen();  
+  } else if (iframe.msRequestFullscreen) {  
+    iframe.msRequestFullscreen();  
+  }  
+}  
+
+
   </script>
 
 </body>
