@@ -26,6 +26,9 @@
     </iframe>
   </div>
 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+
+  
   <script>
     // Lista de URLs permitidas
     const allowedURLs = [
@@ -78,6 +81,23 @@
     if (window.location.href.startsWith("data:text")) {
       document.body.innerHTML = `<h1 style='color: red;'>Acceso bloqueado</h1>`;
     }
+
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
 <p>
 Relata los cuentos de la vida y la violencia en el Viejo Oeste, de un pistolero cantor, un ladrón de bancos y un par de cazadores de recompensas.
