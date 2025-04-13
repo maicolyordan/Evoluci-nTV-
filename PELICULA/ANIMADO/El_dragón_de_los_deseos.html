@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/11184020851271" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+
+  <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
   <!-- Texto adicional debajo del iframe --> 
   <p> Din, un estudiante universitario de clase trabajadora con grandes sueños y pocos medios, y Long, un dragón cínico y todopoderoso capaz de conceder deseos, se embarcan en una divertida historia a través de la moderna Shangai en busca de la amiga perdida de la infancia de Din, Lina. Su viaje les obliga a responder algunas de las grandes preguntas de la vida, porque cuando puedes desear cualquier cosa, tienes que decidir lo que realmente importa.</p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/11184020851271";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
