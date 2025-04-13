@@ -22,6 +22,7 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://hugh.cdn.rumble.cloud/video/s8/2/O/B/d/-/OBd-p.aaa.mp4" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
   <!-- Texto adicional debajo del iframe --> 
   <p> Armado con sus nuevas habilidades y un oscuro y retorcido sentido del humor, Deadpool intentará dar caza al hombre que casi destruye su vida.
 
@@ -56,6 +57,23 @@ Actores: Ryan Reynolds, Morena Baccarin, Ed Skrein, T.J. Miller, Gina Carano, Le
     window.addEventListener('load', () => {
       iframe.src = "https://hugh.cdn.rumble.cloud/video/s8/2/O/B/d/-/OBd-p.aaa.mp4";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
