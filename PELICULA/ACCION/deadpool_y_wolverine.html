@@ -31,6 +31,7 @@
       allow="fullscreen; autoplay; encrypted-media">
     </iframe>
   </div>
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
 
   <!-- Texto adicional debajo del iframe -->
   <p>
@@ -66,6 +67,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://vidhidefast.com/v/5jlv210gxoid";
     });
+
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
   
 </body>
