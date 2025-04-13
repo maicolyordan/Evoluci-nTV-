@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/v/l/D/j/vlDjt.aaa.mp4" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+   
   <!-- Texto adicional debajo del iframe --> 
   <p> Ambientada en el mítico mundo de los rudos vikingos y los dragones salvajes, y basada en el libro infantil de Cressida Cowell, esta comedia de acción narra la historia de Hipo, un vikingo adolescente que no encaja exactamente en la antiquísima reputación de su tribu como cazadores de dragones. El mundo de Hipo se trastoca al encontrar a un dragón que le desafía a él y a sus compañeros vikingos, a ver el mundo desde un punto de vista totalmente diferente.</p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://player.viloud.tv/embed/play?url=https://1a-1791.com/video/s8/2/v/l/D/j/vlDjt.aaa.mp4";
     });
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
