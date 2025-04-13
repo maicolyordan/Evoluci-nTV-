@@ -24,6 +24,9 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/11215861779015" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+
+  <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+
   <!-- Texto adicional debajo del iframe --> 
   <p> Tras morir de forma inesperada, el bombero Ja-hong es llevado al más allá por tres guardianes. Sólo si pasa una serie de juicios durante y demuestra que es inocente en su vida, es apto para reencarnarse. Sus tres guardianes le apoyarán y le defenderán. </p> 
   <script>
@@ -55,6 +58,24 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/11215861779015";
     });
-  </script> 
+
+
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
+     </script> 
  </body>
 </html>
