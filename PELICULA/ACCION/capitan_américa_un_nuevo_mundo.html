@@ -33,6 +33,8 @@
     </iframe>
   </div>
 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+   
   <!-- Texto adicional debajo del iframe -->
   <p>
     Tras reunirse con el recientemente electo presidente de los Estados Unidos Thaddeus Ross, Sam se encuentra en medio de un conflicto internacional. Debe descubrir la razón de un nefasto complot mundial antes de que el verdadero artífice detrás del mismo haga que el mundo entero entre en caos.
@@ -67,6 +69,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://sagitario98.com/wetflixx.php?link=https://pomf2.lain.la/f/9xka9i7i.mp4?download=1";
     });
+
+     function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script>
   
 </body>
