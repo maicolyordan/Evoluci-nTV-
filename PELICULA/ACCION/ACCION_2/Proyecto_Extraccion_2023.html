@@ -23,6 +23,8 @@
    <div class="overlay" onclick="hideOverlay()"></div> 
    <iframe id="secureFrame" src="https://ok.ru/videoembed/11202524875335" allowfullscreen sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; encrypted-media"> </iframe> 
   </div> 
+<button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+   
   <!-- Texto adicional debajo del iframe --> 
   <p> Dos veteranos de guerra son asignados con la misión de escoltar a un grupo de civiles en la denominada "autopista de la muerte", en Baghdad, para que lleguen sanos y salvos a la "Zona Verde", el emplazamiento de seguridad de la zona.</p> 
   <script>
@@ -54,6 +56,23 @@
     window.addEventListener('load', () => {
       iframe.src = "https://ok.ru/videoembed/11202524875335";
     });
+
+    function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
   </script> 
  </body>
 </html>
