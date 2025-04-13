@@ -29,7 +29,8 @@
   </div>
 
  
- </div><button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>  
+ <button class="fullscreen-button" onclick="goFullScreen()">Pantalla completa</button>
+
   <!-- Texto adicional debajo del iframe -->
   <p>
     Un famoso contrabandista promete a su padre, cuando éste está a punto de fallecer, convertirse en un hombre decente y devolver la honra al nombre de la familia. Pero naturalmente, el paso a la honradez no le resultará fácil y tendrá que enfrentarse a parientes, amigos y enemigos
@@ -46,18 +47,22 @@
     }
 
 
-   function goFullScreen() {  
-  if (iframe.requestFullscreen) {  
-    iframe.requestFullscreen();  
-  } else if (iframe.webkitRequestFullscreen) {  
-    iframe.webkitRequestFullscreen();  
-  } else if (iframe.mozRequestFullScreen) {  
-    iframe.mozRequestFullScreen();  
-  } else if (iframe.msRequestFullscreen) {  
-    iframe.msRequestFullscreen();  
-  }  
-}  
-
+   function goFullScreen() {
+  const iframe = document.querySelector("iframe"); // selecciona el primer iframe del documento
+  if (iframe) {
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe.mozRequestFullScreen) {
+      iframe.mozRequestFullScreen();
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  } else {
+    console.warn("No se encontró ningún iframe.");
+  }
+}
 
   </script>
 
